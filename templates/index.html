@@ -1,0 +1,21 @@
+<html>
+    <head></head>
+    <body>
+        <form method="POST" action="/save">
+            <input type="text" name="show"/>
+            <input type="submit" value="Save a Show!"/>
+        </form>
+        <form method="POST" action="/delete">
+            <input type="text" name="show"/>
+            <input type="submit" value="Delete a Show!"/>
+        </form>
+        <h2>You have {{num_shows}} saved TV shows!</h2>
+        <ol>
+            {% for i in range(num_shows) %}
+                <li>
+                    <p>{{shows[i]}}</p>
+                </li>
+            {% endfor %}
+        </ol>
+    </body>
+</html>
