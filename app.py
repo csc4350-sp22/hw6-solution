@@ -1,6 +1,9 @@
 import flask
 import os
 from flask_sqlalchemy import SQLAlchemy
+from dotenv import find_dotenv, load_dotenv
+
+load_dotenv(find_dotenv())
 
 app = flask.Flask(__name__)
 
@@ -43,8 +46,9 @@ def save():
 def delete():
     show_name = flask.request.form.get("show")
     show = TVShow.query.filter_by(title=show_name).first()
-    db.session.delete(show)
-    db.session.commit()
+    if show is not None:
+        db.session.delete(show)
+        db.session.commit()
     return flask.redirect("/")
 
 
